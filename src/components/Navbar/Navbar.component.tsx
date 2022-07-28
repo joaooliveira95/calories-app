@@ -1,19 +1,18 @@
-import "./Navbar.styles.scss";
-import AuthModal from "../AuthModal/AuthModal.component";
-import Form from "antd/lib/form";
-import Menu, { MenuProps } from "antd/lib/menu";
-import { Header } from "antd/lib/layout/layout";
+import './Navbar.styles.scss'
+
+import Form from 'antd/lib/form'
+import { Header } from 'antd/lib/layout/layout'
+import Menu, { MenuProps } from 'antd/lib/menu'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import {
-  LogoutOutlined,
-  LoginOutlined,
-  UserOutlined,
-  UserAddOutlined,
-  HeartOutlined,
-} from "@ant-design/icons";
-import { isAdmin } from "../../services/user.service";
-import { useAuth } from "../../context/auth.context";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+    HeartOutlined, LoginOutlined, LogoutOutlined, UserAddOutlined, UserOutlined
+} from '@ant-design/icons'
+
+import { useAuth } from '../../context/auth.context'
+import { isAdmin } from '../../services/user.service'
+import AuthModal from '../AuthModal/AuthModal.component'
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -21,15 +20,13 @@ function getItem(
   label: React.ReactNode,
   key?: React.Key | null,
   icon?: React.ReactNode,
-  children?: MenuItem[],
-  theme?: "light" | "dark"
+  onClick?:Function
 ): MenuItem {
   return {
     key,
     icon,
-    children,
     label,
-    theme,
+    onClick
   } as MenuItem;
 }
 
@@ -81,9 +78,8 @@ export default function Navbar() {
   const menuItems =
     user && user.email
       ? [
-          getItem(user.email, "sub1", <UserOutlined />, [
-            getItem("Logout", "logout", <LogoutOutlined />),
-          ]),
+          getItem(user.email, "sub1", <UserOutlined />),
+          getItem("Logout", "logout", <LogoutOutlined />,onClick),
         ]
       : [
           getItem("Login", "login", <LoginOutlined />),
@@ -98,6 +94,9 @@ export default function Navbar() {
         </h4>
         {user && user.email && isAdmin(user) && (
           <>
+              <Menu.Item onClick={() => navigate("/")}>
+                Home
+              </Menu.Item>
             <Menu.Item onClick={() => navigate("/admin")}>
               All Food Entries
             </Menu.Item>
