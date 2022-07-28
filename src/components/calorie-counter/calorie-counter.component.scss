@@ -1,0 +1,33 @@
+.cal-calorie-counter {
+  max-width: fit-content;
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 500;
+    color: #c7c6c6;
+
+    &__item-wrapper{
+        display: flex;
+    }
+  }
+  &__chart {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 300px;
+  }
+
+  .square {
+    width: 30px;
+    height: 30px;
+    border: 1px solid white;
+    background-color: rgb(159, 226, 255);
+  }
+  .green-filled {
+    background-color: aquamarine;
+  }
+  .red-filled {
+    background-color: rgb(252, 151, 151);
+  }
+}

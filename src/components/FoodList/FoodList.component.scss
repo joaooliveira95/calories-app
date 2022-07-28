@@ -1,0 +1,44 @@
+.cal-food-list {
+  width: 100%;
+
+  .cal-food-list-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__container {
+    height: 400px;
+    width: 100%;
+
+    .list-item {
+      width: 100%;
+      background-color: white;
+      padding: 12px 24px;
+      margin-bottom: 4px;
+
+      .ant-list-item-meta-title {
+        text-transform: capitalize;
+        font-size: 1.125rem;
+      }
+
+      .ant-list-item-meta-description {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .list-item-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.25rem;
+
+        &__actions {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 0.25rem;
+        }
+      }
+    }
+  }
+}

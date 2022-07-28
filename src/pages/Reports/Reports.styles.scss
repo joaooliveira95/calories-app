@@ -1,0 +1,50 @@
+.reports-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  &__card-wrapper {
+    width: 100%;
+  }
+  &__users-wrapper {
+    width: 100%;
+
+    &__title {
+      color: rgba(0, 0, 0, 0.45) !important;
+    }
+
+    .ant-row {
+      overflow-x: scroll;
+      display: flex;
+      flex-flow: row;
+      max-width: 100%;
+      margin-bottom: 0.5rem;
+    }
+
+    &__daily-report {
+      text-align: center;
+      padding: 0.5rem;
+    }
+
+    &__card {
+      margin-bottom: 0.75rem;
+
+      .ant-card-head-title {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 1.4;
+      }
+
+      .danger {
+        color: red;
+      }
+
+      &__summary {
+        padding-bottom: 1rem;
+
+        .ant-typography {
+          margin-top: 0.5rem !important;
+        }
+      }
+    }
+  }
+}
