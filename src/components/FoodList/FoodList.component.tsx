@@ -1,14 +1,18 @@
-import "./FoodList.component.scss";
-import EditFoodWidget from "../EditFoodWidget/EditFoodWidget.component";
-import Title from "antd/lib/typography/Title";
-import { Button, DatePicker, List, Popconfirm } from "antd";
-import { IFood } from "../../interfaces/food.interface";
-import { ReactElement, useState } from "react";
-import { filterFoodByPeriod, sortByDateTime } from "../../utils/utils";
-import { toast } from "react-toastify";
-import { useFoodEntries } from "../../context/food.context";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import AddFoodWidget from "../add-food-widget/AddFoodWidget.component";
+import './FoodList.component.scss'
+
+import { Button, DatePicker, List, Popconfirm } from 'antd'
+import Title from 'antd/lib/typography/Title'
+import { ReactElement, useState } from 'react'
+import { toast } from 'react-toastify'
+
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
+
+import { useFoodEntries } from '../../context/food.context'
+import { IFood } from '../../interfaces/food.interface'
+import { filterFoodByPeriod, sortByDateTime } from '../../utils/utils'
+import AddFoodWidget from '../add-food-widget/AddFoodWidget.component'
+import EditFoodWidget from '../EditFoodWidget/EditFoodWidget.component'
+import SelectFoodList from '../select-food/select-food.component'
 
 const { RangePicker } = DatePicker;
 
@@ -54,7 +58,7 @@ export default function FoodList({
         header={
           <div className="cal-food-list-header">
             <RangePicker showTime onChange={onRangePickerChange} />
-            <AddFoodWidget />
+            {allowUpdate ? <AddFoodWidget/> : <SelectFoodList></SelectFoodList>}
           </div>
         }
         className="cal-food-list__container"
